@@ -67,32 +67,23 @@ const MenuItem = styled.div`
   ${mobile({ fontSize: "12px", marginLeft: "10px" })}
 `;
 
-const NavBar = () => {
-  return (
-    <Container>
-      <Wrapper>
-        <Left>
-          <Language>EN</Language>
-          <SearchContainer>
-            <Input placeholder="search" />
-            <Search style={{ color: "gray", fontSize: 16 }} />
-          </SearchContainer>
-        </Left>
-        <Center>
-          <Logo>SHOP&GO</Logo>
-        </Center>
-        <Right>
-          <MenuItem>REGISTER</MenuItem>
-          <MenuItem> SIGN IN</MenuItem>
-          <MenuItem>
-            <Badge badgeContent={4} color="primary">
-              <ShoppingCartOutlined />
-            </Badge>
-          </MenuItem>
-        </Right>
-      </Wrapper>
-    </Container>
-  );
-};
-
-export default NavBar;
+export default class NavBar extends Component {
+  render() {
+    return (
+      <nav className="navbar bg-body-tertiary">
+        <div className="container-fluid">
+          <span className="navbar-brand mb-0 h1">
+            Navbar
+            <span>
+              {this.props.totalCount > 0 && (
+                <span className="badge bg-secondary ms-2">
+                  {this.props.totalCount}
+                </span>
+              )}
+            </span>
+          </span>
+        </div>
+      </nav>
+    );
+  }
+}
